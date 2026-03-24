@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import { useAccount, useConnect, useDisconnect, useWriteContract, useWaitForTransactionReceipt } from 'wagmi'
-import { parseEther, formatEther } from 'viem'
+// import { parseEther, formatEther } from 'viem'
 import { trackTransaction } from './utils/track'
 import './App.css'
 
 const CONTRACT_ADDRESS = '0xa7e1dbbe043a5a97d2594042a478b4b06dedaf7b'
-const CLAIM_AMOUNT = '0.001' // 根据合约实际 claimAmount 调整
+// const CLAIM_AMOUNT = '0.001' // 根据合约实际 claimAmount 调整
 
 const ABI = [
   { inputs: [], name: 'claim', outputs: [], stateMutability: 'nonpayable', type: 'function' },
@@ -20,7 +20,7 @@ function App() {
   const { writeContract, data: hash, isPending } = useWriteContract()
   const { isSuccess } = useWaitForTransactionReceipt({ hash })
 
-  const [hasClaimed, setHasClaimed] = useState(false)
+  const [hasClaimed] = useState(false)
 
   useEffect(() => {
     if (isSuccess && hash && address) {

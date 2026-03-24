@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# MicroToken
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ERC20 极简代币 + 每人一次免费领取少量 BMT
 
-Currently, two official plugins are available:
+## 项目信息
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **名称**: MicroToken
+- **代币符号**: BMT (BaseMicro)
+- **合约地址**: `0xa7e1dbbe043a5a97d2594042a478b4b06dedaf7b`
+- **网络**: Base (链ID 8453)
+- **app_id**: `69c2035b824ea2cd64ac6736`
 
-## React Compiler
+## 功能
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 任何用户可免费领取一次少量 BMT 代币（仅需支付 gas）
+- 简化 ERC20 实现
+- 合约所有者可补充/回收代币
 
-## Expanding the ESLint configuration
+## 线上地址
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **生产地址**: https://microtoken-ten.vercel.app
+- **GitHub 仓库**: https://github.com/FredericaWarren/microtoken
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 技术栈
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- React + TypeScript
+- Vite
+- wagmi + viem
+- Base 链
+- Vercel 部署
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 交易归因
+
+所有成功交易自动发送归因埋点到 https://base-dashboard-zeta.vercel.app/api/track
+
+- app_id: `app-002`
+- app_name: `MicroToken`
+
+## Builder Code
+
+待补充（留空等待后续填入）
+
+## 开发
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 部署
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+推送到 main 分支自动触发 Vercel 部署。
